@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Card.module.scss'
 
 const Card = (props) => {
+  const [isAdded, setIsAdded] = useState(false)
+
+  function toggleAddToCartHandler() {
+    props.onToggleAddToCart()
+    setIsAdded(!isAdded)
+  }
+
   return (
     <div className={styles.card}>
-      <div className={styles.favorite}>
-        <img src="/icons/heart-unсliked.svg" alt="Unсliked" />
+      <div className={styles.favorite} onClick={props.onFavorite}>
+        <img src="/icons/heart_unclicked.svg" alt="Unclicked" />
       </div>
       <img width={133} height={112} src={props.imageUrl} alt="" />
       <h5>{props.title}</h5>
@@ -14,8 +21,11 @@ const Card = (props) => {
           <span>Цена:</span>
           <b>{props.price} руб.</b>
         </div>
-        <button onClick={props.onClick}>
-          <img width={11} height={11} src="/icons/add-btn.svg" alt="plus" />
+        <button onClick={toggleAddToCartHandler}>
+          <img
+            src={isAdded ? '/icons/btn_added.svg' : '/icons/btn_add.svg'}
+            alt="plus"
+          />
         </button>
       </div>
     </div>
