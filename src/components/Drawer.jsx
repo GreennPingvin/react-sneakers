@@ -1,48 +1,23 @@
 import React from 'react'
+import CartItem from './CartItem/CartItem'
 
-const Drawer = () => {
+const Drawer = ({ cartItems = [], ...props }) => {
   return (
-    <div className="overlay" style={{ display: 'none' }}>
+    <div className="overlay">
       <div className="drawer">
         <h2 className="d-flex justify-between mb-30">
           Корзина
           <img
             className="removeBtn cu-p"
-            src="/icons/btn-remove.svg"
-            alt="Remove"
+            src="/icons/btn_remove.svg"
+            alt="Close"
+            onClick={props.onClose}
           />
         </h2>
-        <div className="items flex">
-          <div className="cartItem d-flex align-center mb-20">
-            <div
-              className="cartItemImg"
-              style={{ backgroundImage: 'url(/img/sneakers/sneakers-1.jpg)' }}
-            ></div>
-            <div className="flex mr-20 ">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img
-              className="removeBtn"
-              src="/icons/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
-          <div className="cartItem d-flex align-center mb-20">
-            <div
-              className="cartItemImg"
-              style={{ backgroundImage: 'url(/img/sneakers/sneakers-1.jpg)' }}
-            ></div>
-            <div className="flex mr-20 ">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img
-              className="removeBtn"
-              src="/icons/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
+        <div className="cartItems flex">
+          {cartItems.map((cartItem, i) => (
+            <CartItem key={i} {...cartItem} />
+          ))}
         </div>
         <ul className="cartTotalBlock">
           <li>
