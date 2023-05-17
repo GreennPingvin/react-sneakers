@@ -1,35 +1,33 @@
+import { useEffect, useState } from 'react'
 import Card from './components/Card/Card'
 import Drawer from './components/Drawer'
 import Header from './components/Header'
 
-const arr = [
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 12999,
-    imageUrl: '/img/sneakers/1.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike Air Max 270',
-    price: 15600,
-    imageUrl: '/img/sneakers/2.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 8499,
-    imageUrl: '/img/sneakers/3.jpg',
-  },
-  {
-    title: 'Кроссовки Puma X Aka Boku Future Rider',
-    price: 8999,
-    imageUrl: '/img/sneakers/4.jpg',
-  },
-]
-
 function App() {
+  const [items, setItems] = useState([])
+  const [cartItems, setCartItems] = useState([])
+  const [isCartOpened, setIsCartOpened] = useState(false)
+
+  useEffect(() => {
+    fetch('https://6464a082127ad0b8f8a37ec2.mockapi.io/items')
+      .then((res) => res.json())
+      .then(setItems)
+  }, [])
+
+  function toggleAddToCartHandler(item) {
+    if (cartItems.includes(item)) {
+      setCartItems((prev) => prev.filter((i) => i !== item))
+    } else {
+      setCartItems((prev) => [...prev, item])
+    }
+  }
+
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {isCartOpened && (
+        <Drawer cartItems={cartItems} onClose={() => setIsCartOpened(false)} />
+      )}
+      <Header onClickCart={() => setIsCartOpened(true)} />
       <div className="content p-40">
         <div className="d-flex align-center justify-between mb-40">
           <h1>Все кроссовки</h1>
@@ -38,9 +36,14 @@ function App() {
             <input type="text" placeholder="Поиск..." />
           </div>
         </div>
-        <div className="d-flex justify-between">
-          {arr.map((item, i) => (
-            <Card key={i} {...item} />
+        <div className="items">
+          {items.map((item, i) => (
+            <Card
+              key={i}
+              {...item}
+              onToggleAddToCart={() => toggleAddToCartHandler(item)}
+              onFavorite={() => console.log('Added to favorites')}
+            />
           ))}
         </div>
       </div>

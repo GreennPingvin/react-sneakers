@@ -40,14 +40,6 @@ button {
   cursor: pointer;
 }
 
-.button {
-  width: 32px;
-  height: 32px;
-  background: #ffffff;
-  border: 1px solid #f2f2f2;
-  border-radius: 8px;
-}
-
 .search-block {
   padding: 0px 15px;
   border: 1px solid #f3f3f3;
@@ -64,10 +56,11 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background-color: rgba($color: #000000, $alpha: 0.5);
   z-index: 1;
+  overflow: hidden;
 }
 
 .drawer {
@@ -82,11 +75,6 @@ button {
 
   h2 {
     margin: 0;
-  }
-
-  .items {
-    overflow: auto;
-    margin-bottom: 40px;
   }
 
   .cartTotalBlock {
@@ -121,6 +109,17 @@ button {
   }
 }
 
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  justify-items: center;
+  gap: 20px;
+}
+
+.cartItems {
+  overflow-y: auto;
+}
+
 .greenBtn {
   padding: 18px;
   font-weight: 500;
@@ -137,35 +136,5 @@ button {
   }
   &:active {
     background-color: darken(#9dd558, 5%);
-  }
-}
-
-.cartItem {
-  padding: 20px;
-  border: 1px solid #f3f3f3;
-  border-radius: 20px;
-  overflow: hidden;
-  .cartItemImg {
-    margin-right: 20px;
-    width: 70px;
-    height: 70px;
-    background-size: contain;
-    background-position: 0 -3px;
-    background-repeat: no-repeat;
-  }
-  p {
-    margin: 0;
-    font-size: 16px;
-  }
-  b {
-    font-size: 14px;
-  }
-  .removeBtn {
-    opacity: 0.5;
-    transition: opacity 0.2s ease-in-out;
-    cursor: pointer;
-    &:hover {
-      opacity: 1;
-    }
   }
 }
