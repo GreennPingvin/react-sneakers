@@ -26,6 +26,34 @@ const App = () => {
           </li>
         </ul>
       </header>
+      <main className="content">
+        <h1 className="title content__title">Все кроссовки</h1>
+        <div className="sneakers">
+          <div className="card">
+            <div className="card__img">
+              <img
+                src="/img/sneakers/sneakers-1.jpg"
+                alt="Картинка кроссовок"
+              />
+              <button className="card__fav-btn">
+                <img src="/icons/heart-unliked.svg" alt="" />
+              </button>
+            </div>
+            <div className="card__title">
+              Мужские Кроссовки Nike Blazer Mid Suede
+            </div>
+            <div className="card__bottom">
+              <div className="card__price-info">
+                <div className="card__price-label">цена:</div>
+                <div className="card__price">12999 руб.</div>
+              </div>
+              <button className="card__add-btn">
+                <img src="/icons/add-btn.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
