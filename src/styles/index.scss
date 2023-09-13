@@ -1,0 +1,39 @@
+@import "reset";
+@import "fonts";
+@import "variables";
+
+body {
+  font-family: Inter, sans-serif;
+  font-size: var(--font-size);
+  padding: 85px 85px 0;
+  color: var(--primary-text-color);
+  background-color: var(--background-color);
+}
+
+.app {
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: var(--app-background-color);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 43px 63px 44px 45px;
+  border-bottom: 1px solid #eaeaea;
+  &__left {
+    display: flex;
+    gap: 16px;
+  }
+  &__right {
+    display: flex;
+    gap: 30px;
+  }
+  &__cart {
+    display: flex;
+    gap: 10px;
+  }
+}
