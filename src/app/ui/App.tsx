@@ -1,3 +1,4 @@
+import { sneakers } from "app/data/sneakers";
 import { Card } from "entities/Card";
 import { Cart } from "entities/Cart/Cart";
 import { Header } from "widgets/Header";
@@ -25,12 +26,12 @@ const App = () => {
             </div>
           </div>
           <div className="sneakers">
-            {[...new Array(4)].map((el, i) => (
+            {sneakers.map((sneaker) => (
               <Card
-                key={i}
-                imgSrc={`/img/sneakers/sneakers-${i + 1}.jpg`}
-                title="Мужские Кроссовки Nike Blazer Mid Suede"
-                price={12999}
+                key={sneaker.id}
+                imgSrc={sneaker.imageSrc}
+                title={sneaker.title}
+                price={sneaker.price}
               />
             ))}
           </div>

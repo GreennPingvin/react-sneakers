@@ -19,7 +19,6 @@
   background-color: var(--app-background-color);
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.04);
 }
-
 .overlay {
   position: absolute;
   z-index: 100;
@@ -30,23 +29,19 @@
   opacity: 0.5;
   background: #000;
 }
-
 .content {
   padding: 45px 60px;
 }
-
 .title {
   font-size: 32px;
   font-weight: 700;
 }
-
 .title-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 }
-
 .search {
   display: flex;
   align-items: center;
@@ -62,7 +57,6 @@
     outline: none;
   }
 }
-
 .sneakers {
   display: grid;
   grid-template-columns: repeat(4, auto);

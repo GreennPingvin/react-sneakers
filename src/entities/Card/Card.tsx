@@ -10,11 +10,11 @@ interface CardProps {
 }
 
 export const Card = ({ className, imgSrc, title, price }: CardProps) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const onAddToFavoritesBtnClick = () => {
-    setIsFavorite(!isFavorite);
+    setIsAddedToFavorites(!isAddedToFavorites);
   };
 
   const onAddToCartBtnCLick = () => {
@@ -30,7 +30,9 @@ export const Card = ({ className, imgSrc, title, price }: CardProps) => {
             width={32}
             height={32}
             src={
-              isFavorite ? "/icons/heart-liked.svg" : "/icons/heart-unliked.svg"
+              isAddedToFavorites
+                ? "/icons/heart-liked.svg"
+                : "/icons/heart-unliked.svg"
             }
             alt="Иконка добавления в избранное"
           />
