@@ -2,47 +2,37 @@
 @import "fonts";
 @import "variables";
 
-body {
+.app {
   font-family: Inter, sans-serif;
   font-size: var(--font-size);
-  padding: 85px 85px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: var(--app-padding);
   color: var(--primary-text-color);
   background-color: var(--background-color);
 }
-
-.app {
+.container {
   max-width: var(--app-max-width);
-  margin: 0 auto;
+  min-height: calc(100vh - var(--app-padding) * 2);
   border-radius: 20px;
   background-color: var(--app-background-color);
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.04);
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 43px 63px 44px 45px;
-  border-bottom: 1px solid #eaeaea;
-  &__left {
-    display: flex;
-    gap: 16px;
-  }
-  &__right {
-    display: flex;
-    gap: 30px;
-  }
-  &__cart {
-    display: flex;
-    gap: 10px;
-  }
+.overlay {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #000;
 }
 
 .content {
   padding: 45px 60px;
-  &__title {
-    margin-bottom: 40px;
-  }
 }
 
 .title {
@@ -50,53 +40,31 @@ body {
   font-weight: 700;
 }
 
-.card {
+.title-wrapper {
   display: flex;
-  flex-direction: column;
-  width: 210px;
-  height: 260px;
-  padding: 22px 29px 32px 31px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 45px;
+  padding: 7px 18px;
   border: 1px solid #f3f3f3;
-  border-radius: 40px;
+  border-radius: 10px;
   gap: 14px;
-  &__img {
-    position: relative;
-    width: 133px;
-    height: 112px;
-    img {
-      width: 100%;
-    }
+  &__input {
+    padding: 7px;
+    border: none;
+    outline: none;
   }
-  &__fav-btn {
-    position: absolute;
-    z-index: 100;
-    top: 9px;
-    left: -3px;
-  }
-  &__title {
-    width: 150px;
-  }
-  &__bottom {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__price-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  &__price-label {
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #bdbdbd;
-  }
-  &__price {
-    font-weight: 700;
-  }
-  &__add-btn {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #f2f2f2;
-    border-radius: 8px;
-  }
+}
+
+.sneakers {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 40px;
 }
