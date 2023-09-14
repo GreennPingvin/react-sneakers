@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "module": "commonjs",
     "noImplicitAny": true,
     "removeComments": true,
@@ -8,7 +9,9 @@
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "shared/*": ["src/shared/*"]
+      "@shared/*": ["./src/shared/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@entities/*": ["./src/entities/*"]
     }
   }
 }
