@@ -37,7 +37,7 @@ const App = () => {
           </div>
         </main>
       </div>
-      {/*<Cart />*/}
+      <Cart />
     </div>
   );
 };

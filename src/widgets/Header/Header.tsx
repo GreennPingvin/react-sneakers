@@ -1,12 +1,14 @@
-import { classNames } from "../../shared/lib/classNames/classNames";
+import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Header.module.scss";
-import React from "react";
+import { useCart } from "shared/hooks/useCart";
 
 interface HeaderProps {
   className?: string;
 }
 
 export const Header = ({ className }: HeaderProps) => {
+  const { showCart } = useCart();
+
   return (
     <header className={classNames(cls.Header, {}, [className])}>
       <div className={cls.left}>
@@ -20,7 +22,7 @@ export const Header = ({ className }: HeaderProps) => {
       </div>
       <ul className={cls.right}>
         <li className={cls.cart}>
-          <button>
+          <button onClick={showCart}>
             <img width={18} height={18} src="/icons/cart.svg" alt="" />
           </button>
           <div className={cls.cartSum}>1205 руб.</div>

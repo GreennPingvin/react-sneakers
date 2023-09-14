@@ -6,7 +6,7 @@ interface CardProps {
   className?: string;
   imgSrc: string;
   title: string;
-  price: string | number;
+  price: number;
 }
 
 export const Card = ({ className, imgSrc, title, price }: CardProps) => {
