@@ -13,6 +13,8 @@ export const Cart = ({ className }: CartProps) => {
   const { cartIsHidden, hideCart } = useCart();
   const { itemsAddedToCart, removeFromCart } = useItemsInCart();
 
+  const totalSum = itemsAddedToCart.reduce((acc, item) => acc + item.price, 0);
+
   return (
     <>
       <Overlay isHidden={cartIsHidden} onClick={hideCart} />
@@ -27,7 +29,6 @@ export const Cart = ({ className }: CartProps) => {
             <img src="/icons/btn-remove.svg" alt="Кнопка закрытия корзины" />
           </button>
         </div>
-
         <ul className={cls.items}>
           {itemsAddedToCart.map((item) => (
             <CartItem
@@ -42,12 +43,14 @@ export const Cart = ({ className }: CartProps) => {
             <div className={cls.infoItem}>
               <div className={cls.infoLabel}>Итого:</div>
               <div className={cls.infoSeparator}></div>
-              <div className={cls.infoPrice}>21498 руб.</div>
+              <div className={cls.infoPrice}>{totalSum.toFixed(2)} руб.</div>
             </div>
             <div className={cls.infoItem}>
               <div className={cls.infoLabel}>Налог 5%:</div>
               <div className={cls.infoSeparator}></div>
-              <div className={cls.infoPrice}>1074 руб.</div>
+              <div className={cls.infoPrice}>
+                {(totalSum * 0.05).toFixed(2)} руб.
+              </div>
             </div>
           </div>
           <button className={cls.orderBtn}>Оформить заказ</button>
