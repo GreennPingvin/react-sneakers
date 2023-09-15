@@ -1,9 +1,21 @@
 import { sneakers } from "app/data/sneakers";
 import { Card } from "entities/Card";
 import { Cart } from "entities/Cart/Cart";
+import { useItemsInCart } from "shared/hooks/useItemsInCart";
 import { Header } from "widgets/Header";
+import { Sneaker } from "../data/types";
 
 const App = () => {
+  const { itemsAddedToCart, addToCart, removeFromCart } = useItemsInCart();
+
+  const onToggleAddToCartCLick = (sneaker: Sneaker) => {
+    if (itemsAddedToCart.includes(sneaker)) {
+      removeFromCart(sneaker);
+    } else {
+      addToCart(sneaker);
+    }
+  };
+
   return (
     <div className="app">
       <div className="container">
@@ -29,9 +41,8 @@ const App = () => {
             {sneakers.map((sneaker) => (
               <Card
                 key={sneaker.id}
-                imgSrc={sneaker.imageSrc}
-                title={sneaker.title}
-                price={sneaker.price}
+                item={sneaker}
+                onTogglePlusClick={() => onToggleAddToCartCLick(sneaker)}
               />
             ))}
           </div>

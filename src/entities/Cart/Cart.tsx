@@ -2,6 +2,8 @@ import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Cart.module.scss";
 import { useCart } from "shared/hooks/useCart";
 import { Overlay } from "widgets/Overlay";
+import { useItemsInCart } from "shared/hooks/useItemsInCart";
+import { CartItem } from "../CartItem";
 
 interface CartProps {
   className?: string;
@@ -9,6 +11,7 @@ interface CartProps {
 
 export const Cart = ({ className }: CartProps) => {
   const { cartIsHidden, hideCart } = useCart();
+  const { itemsAddedToCart, removeFromCart } = useItemsInCart();
 
   return (
     <>
@@ -26,25 +29,13 @@ export const Cart = ({ className }: CartProps) => {
         </div>
 
         <ul className={cls.items}>
-          <li className={cls.item}>
-            <div className={cls.itemImg}>
-              <img
-                width={70}
-                height={70}
-                src="/img/sneakers/1.jpg"
-                alt="Изображение товара"
-              />
-            </div>
-            <div className={cls.itemDesc}>
-              <div className={cls.itemTitle}>
-                Мужские Кроссовки Nike Air Max 270
-              </div>
-              <div className={cls.itemPrice}>12999 руб.</div>
-            </div>
-            <button>
-              <img width={32} height={32} src="/icons/btn-remove.svg" alt="" />
-            </button>
-          </li>
+          {itemsAddedToCart.map((item) => (
+            <CartItem
+              key={item.id}
+              item={item}
+              onRemoveFromCart={() => removeFromCart(item)}
+            />
+          ))}
         </ul>
         <div className={cls.info}>
           <div className={cls.infoItems}>

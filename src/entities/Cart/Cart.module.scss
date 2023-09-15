@@ -13,37 +13,16 @@
   &.hidden {
     transform: translateX(100%);
   }
-  .items {
-    flex-grow: 1;
-  }
-  .item {
-    display: flex;
-    align-items: center;
-    min-width: 325px;
-    min-height: 119px;
-    padding: 20px;
-    border: 1px solid #f3f3f3;
-    border-radius: 20px;
-  }
-  .itemImg {
-    margin-right: 20px;
-  }
-  .itemDesc {
-    display: flex;
-    flex-direction: column;
-    width: 150px;
-    margin-right: 12px;
-    gap: 8px;
-  }
-  .itemTitle {
-  }
-  .itemPrice {
-    font-weight: 700;
-  }
   .titleWrapper {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
   }
   .info {
     display: flex;
