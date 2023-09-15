@@ -12,7 +12,7 @@ interface CardProps {
 
 export const Card = ({ className, item, onTogglePlusClick }: CardProps) => {
   const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
-  const { itemsAddedToCart } = useItemsInCart();
+  const { isItemInCart } = useItemsInCart();
 
   const onAddToFavoritesBtnClick = () => {
     setIsAddedToFavorites(!isAddedToFavorites);
@@ -55,7 +55,7 @@ export const Card = ({ className, item, onTogglePlusClick }: CardProps) => {
             width={32}
             height={32}
             src={
-              itemsAddedToCart.includes(item)
+              isItemInCart(item)
                 ? "/icons/added-to-cart-btn.svg"
                 : "/icons/add-to-cart-btn.svg"
             }

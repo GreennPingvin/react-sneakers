@@ -6,10 +6,10 @@ import { Header } from "widgets/Header";
 import { Sneaker } from "../data/types";
 
 const App = () => {
-  const { itemsAddedToCart, addToCart, removeFromCart } = useItemsInCart();
+  const { addToCart, removeFromCart, isItemInCart } = useItemsInCart();
 
   const onToggleAddToCartCLick = (sneaker: Sneaker) => {
-    if (itemsAddedToCart.includes(sneaker)) {
+    if (isItemInCart(sneaker)) {
       removeFromCart(sneaker);
     } else {
       addToCart(sneaker);
