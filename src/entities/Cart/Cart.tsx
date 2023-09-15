@@ -12,7 +12,7 @@ export const Cart = ({ className }: CartProps) => {
 
   return (
     <>
-      <Overlay isHidden={cartIsHidden} />
+      <Overlay isHidden={cartIsHidden} onClick={hideCart} />
       <div
         className={classNames(cls.Cart, { [cls.hidden]: cartIsHidden }, [
           className,
@@ -21,7 +21,7 @@ export const Cart = ({ className }: CartProps) => {
         <div className={cls.titleWrapper}>
           <div className={classNames("title", {}, [cls.title])}>Корзина</div>
           <button onClick={hideCart}>
-            <img src="/icons/btn-remove.svg" alt="" />
+            <img src="/icons/btn-remove.svg" alt="Кнопка закрытия корзины" />
           </button>
         </div>
 

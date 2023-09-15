@@ -4,10 +4,14 @@ import cls from "./Overlay.module.scss";
 interface OverlayProps {
   className?: string;
   isHidden: boolean;
+  onClick?: () => void;
 }
 
-export const Overlay = ({ className, isHidden }: OverlayProps) => {
+export const Overlay = ({ className, isHidden, onClick }: OverlayProps) => {
   return isHidden ? null : (
-    <div className={classNames(cls.Overlay, {}, [className])}></div>
+    <div
+      onClick={onClick}
+      className={classNames(cls.Overlay, {}, [className])}
+    ></div>
   );
 };
