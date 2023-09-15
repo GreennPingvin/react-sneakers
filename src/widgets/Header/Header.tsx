@@ -24,8 +24,8 @@ export const Header = ({ className }: HeaderProps) => {
         <li className={cls.cart}>
           <button onClick={showCart}>
             <img width={18} height={18} src="/icons/cart.svg" alt="" />
+            <div className={cls.cartSum}>1205 руб.</div>
           </button>
-          <div className={cls.cartSum}>1205 руб.</div>
         </li>
         <li>
           <button>

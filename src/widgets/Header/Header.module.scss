@@ -13,7 +13,9 @@
     gap: 30px;
   }
   .cart {
-    display: flex;
-    gap: 10px;
+    button {
+      display: flex;
+      gap: 10px;
+    }
   }
 }
