@@ -1,0 +1,18 @@
+$button-background-color: #9dd458;
+
+.Button {
+  display: flex;
+  padding: 18px;
+  border-radius: 18px;
+  background-color: $button-background-color;
+  .text {
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+  }
+  &:hover {
+    background-color: darken($button-background-color, 5%);
+  }
+}

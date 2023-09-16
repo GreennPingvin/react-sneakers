@@ -4,6 +4,7 @@ import { useCart } from "shared/hooks/useCart";
 import { Overlay } from "widgets/Overlay";
 import { useItemsInCart } from "shared/hooks/useItemsInCart";
 import { CartItem } from "../CartItem";
+import { Button } from "widgets/Button/Button";
 
 interface CartProps {
   className?: string;
@@ -53,7 +54,9 @@ export const Cart = ({ className }: CartProps) => {
               </div>
             </div>
           </div>
-          <button className={cls.orderBtn}>Оформить заказ</button>
+          <Button className={cls.orderBtn} arrowDirection={"right"}>
+            Оформить заказ
+          </Button>
         </div>
       </div>
     </>
