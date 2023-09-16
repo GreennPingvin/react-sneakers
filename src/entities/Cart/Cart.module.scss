@@ -1,13 +1,14 @@
 .Cart {
   position: fixed;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  //justify-content: center;
   z-index: 200;
   top: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 400px;
+  min-width: 395px;
   height: 100vh;
-  padding: 32px 30px;
+  padding: 32px 30px 30px 40px;
   transition: transform 0.1s ease-out;
   background-color: #fff;
   &.hidden {
@@ -17,36 +18,5 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
-  }
-  .items {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 20px;
-  }
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .infoItems {
-    display: flex;
-    flex-direction: column;
-    gap: 19px;
-  }
-  .infoItem {
-    display: flex;
-    gap: 9px;
-  }
-  .infoLabel {
-    font-size: 16px;
-  }
-  .infoSeparator {
-    flex-grow: 1;
-    border-bottom: 1px dashed #dfdfdf;
-  }
-  .infoPrice {
-    font-size: 16px;
-    font-weight: 600;
   }
 }

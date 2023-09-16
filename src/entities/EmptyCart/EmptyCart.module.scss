@@ -1,0 +1,23 @@
+.EmptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  > img {
+    margin-bottom: 21px;
+  }
+  .subtitle {
+    margin-bottom: 9px;
+  }
+  .text {
+    width: 285px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    opacity: 0.4;
+    margin-bottom: 40px;
+  }
+  .backBtn {
+    width: 245px;
+  }
+}

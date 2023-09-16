@@ -2,7 +2,8 @@ $button-background-color: #9dd458;
 
 .Button {
   display: flex;
-  padding: 18px;
+  align-items: center;
+  padding: 18px 30px;
   border-radius: 18px;
   background-color: $button-background-color;
   .text {

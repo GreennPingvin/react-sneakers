@@ -1,0 +1,35 @@
+.CartWithItems {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  .items {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .infoItems {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+  }
+  .infoItem {
+    display: flex;
+    gap: 9px;
+  }
+  .infoLabel {
+    font-size: 16px;
+  }
+  .infoSeparator {
+    flex-grow: 1;
+    border-bottom: 1px dashed #dfdfdf;
+  }
+  .infoPrice {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
