@@ -1,12 +1,16 @@
-import { sneakers } from "app/data/sneakers";
 import { Card } from "entities/Card";
-import { Cart } from "entities/Cart/Cart";
+import { Cart } from "entities/Cart";
+import { ChangeEvent, useState } from "react";
+import { useFilteredItems } from "shared/hooks/useFilteredItems";
 import { useItemsInCart } from "shared/hooks/useItemsInCart";
 import { Header } from "widgets/Header";
+import { SearchInput } from "widgets/SearchInput";
 import { Sneaker } from "../data/types";
 
 const App = () => {
   const { addToCart, removeFromCart, isItemInCart } = useItemsInCart();
+  const { filteredItems, filterItems } = useFilteredItems();
+  const [searchString, setSearchString] = useState("");
 
   const onToggleAddToCartCLick = (sneaker: Sneaker) => {
     if (isItemInCart(sneaker)) {
@@ -16,6 +20,12 @@ const App = () => {
     }
   };
 
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newSearchString = e.target.value;
+    setSearchString(newSearchString);
+    filterItems(newSearchString);
+  };
+
   return (
     <div className="app">
       <div className="container">
@@ -23,22 +33,10 @@ const App = () => {
         <main className="content">
           <div className="title-wrapper">
             <h1 className="title content__title">Все кроссовки</h1>
-            <div className="search">
-              <img
-                width="14"
-                height="14"
-                src="/icons/search.svg"
-                alt="Иконка поиска"
-              />
-              <input
-                className="search__input"
-                type="text"
-                placeholder="Поиск..."
-              />
-            </div>
+            <SearchInput value={searchString} onChange={onInputChange} />
           </div>
           <div className="sneakers">
-            {sneakers.map((sneaker) => (
+            {filteredItems.map((sneaker) => (
               <Card
                 key={sneaker.id}
                 item={sneaker}

@@ -1,10 +1,10 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import cls from "./Cart.module.scss";
 import { useCart } from "shared/hooks/useCart";
+import { useItemsInCart } from "shared/hooks/useItemsInCart";
+import { classNames } from "shared/lib/classNames/classNames";
 import { Overlay } from "widgets/Overlay";
 import { CartWithItems } from "../CartWithItems";
 import { EmptyCart } from "../EmptyCart";
-import { useItemsInCart } from "../../shared/hooks/useItemsInCart";
+import cls from "./Cart.module.scss";
 
 interface CartProps {
   className?: string;

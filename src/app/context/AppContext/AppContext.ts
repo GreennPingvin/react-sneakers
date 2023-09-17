@@ -6,6 +6,8 @@ export interface AppContextProps {
   setCartIsHidden?: (state: boolean) => void;
   itemsAddedToCart?: Sneaker[];
   setItemsAddedToCart?: (items: Sneaker[]) => void;
+  filteredItems?: Sneaker[];
+  setFilteredItems?: (items: Sneaker[]) => void;
 }
 
 export const AppContext = createContext<AppContextProps>({});
