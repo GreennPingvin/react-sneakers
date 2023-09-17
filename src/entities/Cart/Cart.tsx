@@ -1,3 +1,5 @@
+import { CartWithOrder } from "entities/CartWIthOrder";
+import { useState } from "react";
 import { useCart } from "shared/hooks/useCart";
 import { useItemsInCart } from "shared/hooks/useItemsInCart";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -12,7 +14,18 @@ interface CartProps {
 
 export const Cart = ({ className }: CartProps) => {
   const { cartIsHidden, hideCart } = useCart();
-  const { itemsAddedToCart } = useItemsInCart();
+  const { itemsAddedToCart, clearCart } = useItemsInCart();
+  const [isOrderCreated, setIsOrderCreated] = useState(false);
+
+  const onOrderCreated = () => {
+    clearCart();
+    setIsOrderCreated(!isOrderCreated);
+  };
+
+  const onBackBtnCreated = () => {
+    setIsOrderCreated(false);
+    hideCart();
+  };
 
   return (
     <>
@@ -29,7 +42,15 @@ export const Cart = ({ className }: CartProps) => {
           </button>
         </header>
         <main className={cls.mainWrapper}>
-          {itemsAddedToCart.length ? <CartWithItems /> : <EmptyCart />}
+          {!isOrderCreated &&
+            (itemsAddedToCart.length ? (
+              <CartWithItems onOrderCreated={onOrderCreated} />
+            ) : (
+              <EmptyCart />
+            ))}
+          {isOrderCreated && (
+            <CartWithOrder onBackBtnClick={onBackBtnCreated} />
+          )}
         </main>
       </div>
     </>

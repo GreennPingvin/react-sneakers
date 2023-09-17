@@ -6,9 +6,13 @@ import cls from "./CartWithItems.module.scss";
 
 interface CartWithItemsProps {
   className?: string;
+  onOrderCreated: () => void;
 }
 
-export const CartWithItems = ({ className }: CartWithItemsProps) => {
+export const CartWithItems = ({
+  className,
+  onOrderCreated,
+}: CartWithItemsProps) => {
   const { itemsAddedToCart, removeFromCart, getItemsInCartTotal } =
     useItemsInCart();
 
@@ -40,7 +44,11 @@ export const CartWithItems = ({ className }: CartWithItemsProps) => {
             </div>
           </div>
         </div>
-        <Button className={cls.orderBtn} arrowDirection={"right"}>
+        <Button
+          className={cls.orderBtn}
+          arrowDirection={"right"}
+          onClick={onOrderCreated}
+        >
           Оформить заказ
         </Button>
       </div>

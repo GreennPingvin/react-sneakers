@@ -29,11 +29,17 @@ export const useItemsInCart = () => {
     return itemsAddedToCart.reduce((acc, i) => acc + i.price, 0);
   };
 
+  const clearCart = () => {
+    setItemsAddedToCart([]);
+    saveItems([]);
+  };
+
   return {
     itemsAddedToCart,
     addToCart,
     removeFromCart,
     isItemInCart,
     getItemsInCartTotal,
+    clearCart,
   };
 };
