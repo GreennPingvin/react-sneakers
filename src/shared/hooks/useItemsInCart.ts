@@ -1,6 +1,6 @@
 import { AppContext } from "app/context/AppContext/AppContext";
-import { useContext } from "react";
 import { Sneaker } from "app/data/types";
+import { useContext } from "react";
 import { saveItems } from "../lib/shopItems/localStorage";
 
 export const useItemsInCart = () => {
@@ -25,10 +25,15 @@ export const useItemsInCart = () => {
     return itemsAddedToCart.find((i) => i.id === item.id) !== undefined;
   };
 
+  const getItemsInCartTotal = (): number => {
+    return itemsAddedToCart.reduce((acc, i) => acc + i.price, 0);
+  };
+
   return {
     itemsAddedToCart,
     addToCart,
     removeFromCart,
     isItemInCart,
+    getItemsInCartTotal,
   };
 };

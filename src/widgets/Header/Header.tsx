@@ -1,6 +1,7 @@
+import { useCart } from "shared/hooks/useCart";
+import { useItemsInCart } from "shared/hooks/useItemsInCart";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Header.module.scss";
-import { useCart } from "shared/hooks/useCart";
 
 interface HeaderProps {
   className?: string;
@@ -8,6 +9,7 @@ interface HeaderProps {
 
 export const Header = ({ className }: HeaderProps) => {
   const { showCart } = useCart();
+  const { getItemsInCartTotal } = useItemsInCart();
 
   return (
     <header className={classNames(cls.Header, {}, [className])}>
@@ -24,7 +26,7 @@ export const Header = ({ className }: HeaderProps) => {
         <li className={cls.cart}>
           <button onClick={showCart}>
             <img width={18} height={18} src="/icons/cart.svg" alt="" />
-            <div className={cls.cartSum}>1205 руб.</div>
+            <div className={cls.cartSum}>{getItemsInCartTotal()} руб.</div>
           </button>
         </li>
         <li>

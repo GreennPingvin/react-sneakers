@@ -1,17 +1,17 @@
+import { useItemsInCart } from "shared/hooks/useItemsInCart";
 import { classNames } from "shared/lib/classNames/classNames";
-import cls from "./CartWithItems.module.scss";
+import { Button } from "widgets/Button/Button";
 import { CartItem } from "../CartItem";
-import { Button } from "../../widgets/Button/Button";
-import { useItemsInCart } from "../../shared/hooks/useItemsInCart";
+import cls from "./CartWithItems.module.scss";
 
 interface CartWithItemsProps {
   className?: string;
 }
 
 export const CartWithItems = ({ className }: CartWithItemsProps) => {
-  const { itemsAddedToCart, removeFromCart } = useItemsInCart();
+  const { itemsAddedToCart, removeFromCart, getItemsInCartTotal } =
+    useItemsInCart();
 
-  const totalSum = itemsAddedToCart.reduce((acc, item) => acc + item.price, 0);
   return (
     <div className={classNames(cls.CartWithItems, {}, [className])}>
       <ul className={cls.items}>
@@ -28,13 +28,15 @@ export const CartWithItems = ({ className }: CartWithItemsProps) => {
           <div className={cls.infoItem}>
             <div className={cls.infoLabel}>Итого:</div>
             <div className={cls.infoSeparator}></div>
-            <div className={cls.infoPrice}>{totalSum.toFixed(2)} руб.</div>
+            <div className={cls.infoPrice}>
+              {getItemsInCartTotal().toFixed(2)} руб.
+            </div>
           </div>
           <div className={cls.infoItem}>
             <div className={cls.infoLabel}>Налог 5%:</div>
             <div className={cls.infoSeparator}></div>
             <div className={cls.infoPrice}>
-              {(totalSum * 0.05).toFixed(2)} руб.
+              {(getItemsInCartTotal() * 0.05).toFixed(2)} руб.
             </div>
           </div>
         </div>
