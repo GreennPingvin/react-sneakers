@@ -2,7 +2,6 @@
   position: fixed;
   display: grid;
   grid-template-rows: auto 1fr;
-  //justify-content: center;
   z-index: 200;
   top: 0;
   right: 0;
@@ -18,5 +17,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+  }
+  .mainWrapper {
+    overflow: auto;
   }
 }

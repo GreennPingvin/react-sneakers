@@ -22,13 +22,15 @@ export const Cart = ({ className }: CartProps) => {
           className,
         ])}
       >
-        <div className={cls.titleWrapper}>
+        <header className={cls.titleWrapper}>
           <div className={classNames("title", {}, [cls.title])}>Корзина</div>
           <button onClick={hideCart}>
             <img src="/icons/btn-remove.svg" alt="Кнопка закрытия корзины" />
           </button>
-        </div>
-        {itemsAddedToCart.length ? <CartWithItems /> : <EmptyCart />}
+        </header>
+        <main className={cls.mainWrapper}>
+          {itemsAddedToCart.length ? <CartWithItems /> : <EmptyCart />}
+        </main>
       </div>
     </>
   );

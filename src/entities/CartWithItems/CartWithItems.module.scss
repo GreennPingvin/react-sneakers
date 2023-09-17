@@ -1,10 +1,12 @@
 .CartWithItems {
   display: grid;
   grid-template-rows: 1fr auto;
+  gap: 30px;
+  height: 100%;
   .items {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    overflow: auto;
     gap: 20px;
   }
   .info {
