@@ -6,7 +6,19 @@
   border-bottom: 1px solid #eaeaea;
   .left {
     display: flex;
+    align-items: center;
     gap: 16px;
+    .info {
+      text-align: left;
+    }
+    .text {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .desc {
+      color: #9d9d9d;
+    }
   }
   .right {
     display: flex;
