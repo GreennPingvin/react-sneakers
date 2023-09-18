@@ -3,4 +3,6 @@ export interface Sneaker {
   title: string;
   price: number;
   imageSrc: string;
+  isInCart?: boolean;
+  isInFavorites?: boolean;
 }

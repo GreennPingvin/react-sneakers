@@ -1,26 +1,20 @@
+import { Sneaker } from "app/data/types";
+import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Card.module.scss";
-import { useState } from "react";
-import { Sneaker } from "app/data/types";
-import { useItemsInCart } from "shared/hooks/useItemsInCart";
 
 interface CardProps {
   className?: string;
   item: Sneaker;
-  onTogglePlusClick: () => void;
 }
 
-export const Card = ({ className, item, onTogglePlusClick }: CardProps) => {
-  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
-  const { isItemInCart } = useItemsInCart();
-
-  const onAddToFavoritesBtnClick = () => {
-    setIsAddedToFavorites(!isAddedToFavorites);
-  };
-
-  const onAddToCartBtnCLick = () => {
-    onTogglePlusClick();
-  };
+export const Card = ({ className, item }: CardProps) => {
+  const {
+    isItemInCart,
+    toggleAddToCart,
+    isItemInFavorites,
+    toggleAddToFavorites,
+  } = useItems();
 
   return (
     <div className={classNames(cls.Card, {}, [className])}>
@@ -31,12 +25,15 @@ export const Card = ({ className, item, onTogglePlusClick }: CardProps) => {
           src={item.imageSrc}
           alt="Изображение товара"
         />
-        <button onClick={onAddToFavoritesBtnClick} className={cls.favBtn}>
+        <button
+          onClick={() => toggleAddToFavorites(item)}
+          className={cls.favBtn}
+        >
           <img
             width={32}
             height={32}
             src={
-              isAddedToFavorites
+              isItemInFavorites(item)
                 ? "/icons/heart-liked.svg"
                 : "/icons/heart-unliked.svg"
             }
@@ -50,7 +47,10 @@ export const Card = ({ className, item, onTogglePlusClick }: CardProps) => {
           <div className={cls.priceLabel}>цена:</div>
           <div className={cls.priceText}>{item.price} руб.</div>
         </div>
-        <button onClick={onAddToCartBtnCLick} className={cls.addToCartBtn}>
+        <button
+          onClick={() => toggleAddToCart(item)}
+          className={cls.addToCartBtn}
+        >
           <img
             width={32}
             height={32}

@@ -1,6 +1,6 @@
+import { ButtonHTMLAttributes } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
-import { ButtonHTMLAttributes } from "react";
 
 type ArrowDirection = "left" | "right";
 
@@ -15,9 +15,14 @@ export const Button = ({
   arrowDirection,
   ...props
 }: ButtonProps) => {
-  const innerHtml = [<span className={cls.text}>{children}</span>];
+  const innerHtml = [
+    <span key={0} className={cls.text}>
+      {children}
+    </span>,
+  ];
   const arrow = (
     <img
+      key={1}
       style={{
         transform: arrowDirection === "left" ? "rotate(180deg)" : "",
       }}

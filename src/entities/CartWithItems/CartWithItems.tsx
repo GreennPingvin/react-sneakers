@@ -1,4 +1,4 @@
-import { useItemsInCart } from "shared/hooks/useItemsInCart";
+import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "widgets/Button/Button";
 import { CartItem } from "../CartItem";
@@ -13,18 +13,13 @@ export const CartWithItems = ({
   className,
   onOrderCreated,
 }: CartWithItemsProps) => {
-  const { itemsAddedToCart, removeFromCart, getItemsInCartTotal } =
-    useItemsInCart();
+  const { getItemsAddedToCart, getItemsInCartTotal } = useItems();
 
   return (
     <div className={classNames(cls.CartWithItems, {}, [className])}>
       <ul className={cls.items}>
-        {itemsAddedToCart.map((item) => (
-          <CartItem
-            key={item.id}
-            item={item}
-            onRemoveFromCart={() => removeFromCart(item)}
-          />
+        {getItemsAddedToCart().map((item) => (
+          <CartItem key={item.id} item={item} />
         ))}
       </ul>
       <div className={cls.info}>

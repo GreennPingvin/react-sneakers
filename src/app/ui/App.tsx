@@ -1,24 +1,13 @@
 import { Card } from "entities/Card";
 import { Cart } from "entities/Cart";
 import { ChangeEvent, useState } from "react";
-import { useFilteredItems } from "shared/hooks/useFilteredItems";
-import { useItemsInCart } from "shared/hooks/useItemsInCart";
+import { useItems } from "shared/hooks/useItems";
 import { Header } from "widgets/Header";
 import { SearchInput } from "widgets/SearchInput";
-import { Sneaker } from "../data/types";
 
 const App = () => {
-  const { addToCart, removeFromCart, isItemInCart } = useItemsInCart();
-  const { filteredItems, filterItems } = useFilteredItems();
+  const { items, filterItems } = useItems();
   const [searchString, setSearchString] = useState("");
-
-  const onToggleAddToCartCLick = (sneaker: Sneaker) => {
-    if (isItemInCart(sneaker)) {
-      removeFromCart(sneaker);
-    } else {
-      addToCart(sneaker);
-    }
-  };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newSearchString = e.target.value;
@@ -36,12 +25,8 @@ const App = () => {
             <SearchInput value={searchString} onChange={onInputChange} />
           </div>
           <div className="sneakers">
-            {filteredItems.map((sneaker) => (
-              <Card
-                key={sneaker.id}
-                item={sneaker}
-                onTogglePlusClick={() => onToggleAddToCartCLick(sneaker)}
-              />
+            {items.map((sneaker) => (
+              <Card key={sneaker.id} item={sneaker} />
             ))}
           </div>
         </main>

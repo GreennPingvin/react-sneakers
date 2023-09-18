@@ -1,8 +1,10 @@
-import { useCallback, useContext } from "react";
 import { AppContext } from "app/context/AppContext";
+import { useCallback, useContext } from "react";
 
 export const useCart = () => {
-  const { cartIsHidden, setCartIsHidden } = useContext(AppContext);
+  const {
+    cart: { isHidden, setIsHidden },
+  } = useContext(AppContext);
 
   const onEscapePressed = useCallback((event: KeyboardEvent) => {
     if (event.key === "Escape") {
@@ -11,17 +13,17 @@ export const useCart = () => {
   }, []);
 
   const showCart = () => {
-    setCartIsHidden(false);
+    setIsHidden(false);
     window.addEventListener("keydown", onEscapePressed);
   };
 
   const hideCart = () => {
-    setCartIsHidden(true);
+    setIsHidden(true);
     window.removeEventListener("keydown", onEscapePressed);
   };
 
   return {
-    cartIsHidden,
+    cartIsHidden: isHidden,
     showCart,
     hideCart,
   };
