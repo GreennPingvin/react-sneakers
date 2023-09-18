@@ -18,7 +18,14 @@ button {
   border: none;
   outline: none;
   background-color: transparent;
-  img {
+  img,
+  svg {
     display: block;
   }
+}
+
+a {
+  font-size: inherit;
+  text-decoration: none;
+  color: inherit;
 }

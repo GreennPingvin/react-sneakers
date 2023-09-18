@@ -2,10 +2,6 @@
   "name": "react_sneakers",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -30,6 +26,11 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -38,9 +39,15 @@
     "@types/node": "^20.6.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@types/react-router-dom": "^5.3.3",
+    "react-scripts": "5.0.1",
     "sass": "^1.66.1",
     "typescript": "^5.2.2",
-    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
+  },
+  "overrides": {
+    "react-scripts": {
+      "typescript": "^5"
+    }
   }
 }
