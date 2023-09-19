@@ -1,6 +1,6 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { Sneaker } from "../../app/data/types";
-import { useItems } from "../../shared/hooks/useItems";
+import { classNames } from "../../../shared/lib/classNames/classNames";
+import { Sneaker } from "../../../app/data/types";
+import { useItems } from "../../../shared/hooks/useItems";
 import cls from "./CartItem.module.scss";
 
 interface CartItemProps {

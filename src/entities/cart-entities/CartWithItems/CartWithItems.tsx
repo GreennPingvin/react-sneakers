@@ -1,6 +1,6 @@
-import { useItems } from "shared/hooks/useItems";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "widgets/Button/Button";
+import { useItems } from "../../../shared/hooks/useItems";
+import { classNames } from "../../../shared/lib/classNames/classNames";
+import { Button } from "../../../widgets/Button/Button";
 import { CartItem } from "../CartItem";
 import cls from "./CartWithItems.module.scss";
 

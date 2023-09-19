@@ -1,7 +1,7 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "../../../shared/lib/classNames/classNames";
 import cls from "./EmptyCart.module.scss";
-import { Button } from "widgets/Button/Button";
-import { useCart } from "shared/hooks/useCart";
+import { Button } from "../../../widgets/Button/Button";
+import { useCart } from "../../../shared/hooks/useCart";
 
 interface EmptyCartProps {
   className?: string;

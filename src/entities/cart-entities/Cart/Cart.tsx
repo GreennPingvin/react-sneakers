@@ -1,9 +1,9 @@
-import { CartWithOrder } from "entities/CartWIthOrder";
+import { CartWithOrder } from "../CartWIthOrder";
 import { useState } from "react";
-import { useCart } from "shared/hooks/useCart";
-import { useItems } from "shared/hooks/useItems";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Overlay } from "widgets/Overlay";
+import { useCart } from "../../../shared/hooks/useCart";
+import { useItems } from "../../../shared/hooks/useItems";
+import { classNames } from "../../../shared/lib/classNames/classNames";
+import { Overlay } from "../../../widgets/Overlay";
 import { CartWithItems } from "../CartWithItems";
 import { EmptyCart } from "../EmptyCart";
 import cls from "./Cart.module.scss";

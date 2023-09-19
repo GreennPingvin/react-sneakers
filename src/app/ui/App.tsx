@@ -1,4 +1,4 @@
-import { Cart } from "entities/Cart";
+import { Cart } from "entities/cart-entities/Cart";
 import { HomePage } from "pages/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "widgets/Header";
