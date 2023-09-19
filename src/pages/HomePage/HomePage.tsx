@@ -1,7 +1,7 @@
-import { Card } from "entities/Card";
 import { ChangeEvent, useState } from "react";
 import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
+import { ItemsList } from "widgets/ItemsList";
 import { SearchInput } from "widgets/SearchInput";
 import { Title } from "widgets/Title";
 import cls from "./HomePage.module.scss";
@@ -26,11 +26,7 @@ export const HomePage = ({ className }: HomePageProps) => {
         <Title>Все кроссовки</Title>
         <SearchInput value={searchString} onChange={onInputChange} />
       </div>
-      <div className={cls.sneakers}>
-        {items.map((sneaker) => (
-          <Card key={sneaker.id} item={sneaker} />
-        ))}
-      </div>
+      <ItemsList items={items} />
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import { Cart } from "entities/cart-entities/Cart";
+import { CartWindow } from "entities/cart/CartWindow";
+import { FavoritesPage } from "pages/FavoritesPage";
 import { HomePage } from "pages/HomePage";
+import { ProfilePage } from "pages/ProfilePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "widgets/Header";
-import { FavoritesPage } from "pages/FavoritesPage";
-import { ProfilePage } from "pages/ProfilePage";
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
           </main>
         </BrowserRouter>
       </div>
-      <Cart />
+      <CartWindow />
     </>
   );
 };

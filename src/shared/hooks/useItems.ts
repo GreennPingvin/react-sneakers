@@ -70,6 +70,10 @@ export const useItems = () => {
     return item.isInFavorites;
   };
 
+  const getFavoriteItems = (): Sneaker[] => {
+    return items.filter((i) => isItemInFavorites(i));
+  };
+
   return {
     items,
     toggleAddToCart,
@@ -78,6 +82,7 @@ export const useItems = () => {
     isItemInFavorites,
     getItemsAddedToCart,
     getItemsInCartTotal,
+    getFavoriteItems,
     clearCart,
     filterItems,
   };

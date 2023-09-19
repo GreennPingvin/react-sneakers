@@ -14,7 +14,7 @@ export const EmptyProfile = ({ className }: EmptyProfileProps) => {
         className={cls.img}
         width={70}
         height={70}
-        src="/img/profile/sad-smile.png"
+        src="/img/profile/sad-face.png"
         alt="Изображение грустного лица"
       />
       <h3 className={cls.title}>У вас нет заказов</h3>

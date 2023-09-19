@@ -3,16 +3,16 @@ import { useCart } from "shared/hooks/useCart";
 import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Overlay } from "widgets/Overlay";
-import { CartWithItems } from "../CartWithItems";
-import { CartWithOrder } from "../CartWIthOrder";
-import { EmptyCart } from "../EmptyCart";
-import cls from "./Cart.module.scss";
+import { CartWithItems } from "../outlets/CartWithItems";
+import { CartWithOrder } from "../outlets/CartWIthOrder";
+import { EmptyCart } from "../outlets/EmptyCart";
+import cls from "./CartWindow.module.scss";
 
 interface CartProps {
   className?: string;
 }
 
-export const Cart = ({ className }: CartProps) => {
+export const CartWindow = ({ className }: CartProps) => {
   const { cartIsHidden, hideCart } = useCart();
   const { getItemsAddedToCart, clearCart } = useItems();
   const [isOrderCreated, setIsOrderCreated] = useState(false);

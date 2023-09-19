@@ -1,6 +1,6 @@
+import { EmptyProfile } from "entities/profile/EmptyProfile";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./ProfilePage.module.scss";
-import { Title } from "widgets/Title";
 
 interface ProfilePageProps {
   className?: string;
@@ -9,9 +9,7 @@ interface ProfilePageProps {
 export const ProfilePage = ({ className }: ProfilePageProps) => {
   return (
     <div className={classNames(cls.ProfilePage, {}, [className])}>
-      <Title hasBackBtn={true} to={"/"}>
-        Мои покупки
-      </Title>
+      <EmptyProfile />
     </div>
   );
 };

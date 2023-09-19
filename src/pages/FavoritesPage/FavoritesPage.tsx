@@ -1,5 +1,7 @@
+import { EmptyFavorites } from "entities/favorites/EmptyFavorites";
+import { FavoritesWithItems } from "entities/favorites/FavoritesWithItems";
+import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Title } from "widgets/Title";
 import cls from "./FavoritesPage.module.scss";
 
 interface FavoritesPageProps {
@@ -7,11 +9,11 @@ interface FavoritesPageProps {
 }
 
 export const FavoritesPage = ({ className }: FavoritesPageProps) => {
+  const { getFavoriteItems } = useItems();
+
   return (
     <div className={classNames(cls.FavoritesPage, {}, [className])}>
-      <Title hasBackBtn={true} to="/">
-        Мои закладки
-      </Title>
+      {getFavoriteItems().length ? <FavoritesWithItems /> : <EmptyFavorites />}
     </div>
   );
 };
