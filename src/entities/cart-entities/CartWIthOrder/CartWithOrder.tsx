@@ -1,5 +1,5 @@
-import { classNames } from "../../../shared/lib/classNames/classNames";
-import { Button } from "../../../widgets/Button/Button";
+import { classNames } from "shared/lib/classNames/classNames";
+import { Button } from "widgets/Button";
 import cls from "./CartWithOrder.module.scss";
 
 interface CartWithOrderProps {

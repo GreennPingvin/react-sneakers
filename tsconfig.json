@@ -9,11 +9,11 @@
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@app/*": ["./src/app/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@widgets/*": ["./src/widgets/*"],
-      "@entities/*": ["./src/entities/*"],
-      "@pages/*": ["./src/pages/*"]
+      "app/*": ["./app/*"],
+      "shared/*": ["./shared/*"],
+      "widgets/*": ["./widgets/*"],
+      "entities/*": ["./entities/*"],
+      "pages/*": ["./pages/*"]
     }
-  },
+  }
 }
