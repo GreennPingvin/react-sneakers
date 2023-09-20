@@ -1,19 +1,18 @@
-import { Sneaker } from "app/data/types";
-import { Card } from "entities/Card";
+import { Item } from "app/data/types";
+import { JSX } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./ItemsList.module.scss";
 
 interface ItemsListProps {
   className?: string;
-  items: Sneaker[];
+  items: Item[];
+  renderFunc: (item: Item, index?: number) => JSX.Element;
 }
 
-export const ItemsList = ({ className, items }: ItemsListProps) => {
+export const ItemsList = ({ className, items, renderFunc }: ItemsListProps) => {
   return (
-    <div className={classNames(cls.ItemsList, {}, [className])}>
-      {items.map((item) => (
-        <Card key={item.id} item={item} />
-      ))}
-    </div>
+    <ul className={classNames(cls.ItemsList, {}, [className])}>
+      {items.map((item, i) => renderFunc(item, i))}
+    </ul>
   );
 };

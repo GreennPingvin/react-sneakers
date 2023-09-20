@@ -1,6 +1,7 @@
 import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "widgets/Button/Button";
+import { ItemsList } from "widgets/ItemsList";
 import { CartItem } from "../../CartItem";
 import cls from "./CartWithItems.module.scss";
 
@@ -17,11 +18,11 @@ export const CartWithItems = ({
 
   return (
     <div className={classNames(cls.CartWithItems, {}, [className])}>
-      <ul className={cls.items}>
-        {getItemsAddedToCart().map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
-      </ul>
+      <ItemsList
+        className={cls.items}
+        items={getItemsAddedToCart()}
+        renderFunc={(item) => <CartItem key={item.id} item={item} />}
+      />
       <div className={cls.info}>
         <div className={cls.infoItems}>
           <div className={cls.infoItem}>

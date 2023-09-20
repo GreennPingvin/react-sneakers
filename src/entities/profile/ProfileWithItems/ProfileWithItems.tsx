@@ -3,23 +3,30 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { ItemsList } from "widgets/ItemsList";
 import { Title } from "widgets/Title";
 import { Card } from "../../Card";
-import cls from "./FavoritesWithItems.module.scss";
+import cls from "./ProfileWithItems.module.scss";
 
-interface ProfileProps {
+interface ProfileWithItemsProps {
   className?: string;
 }
 
-export const FavoritesWithItems = ({ className }: ProfileProps) => {
-  const { getFavoriteItems } = useItems();
+export const ProfileWithItems = ({ className }: ProfileWithItemsProps) => {
+  const { getPurchasedItems } = useItems();
 
   return (
     <div className={classNames(cls.ProfileWithItems, {}, [className])}>
       <Title className={cls.title} hasBackBtn={true} to={"/"}>
-        Мои закладки
+        Мои покупки
       </Title>
       <ItemsList
-        items={getFavoriteItems()}
-        renderFunc={(item) => <Card key={item.id} item={item} />}
+        items={getPurchasedItems()}
+        renderFunc={(item, index) => (
+          <Card
+            key={index}
+            item={item}
+            hasFavBtn={false}
+            hasAddToCartBtn={false}
+          />
+        )}
       />
     </div>
   );

@@ -1,3 +1,4 @@
+import { Card } from "entities/Card";
 import { ChangeEvent, useState } from "react";
 import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -26,7 +27,10 @@ export const HomePage = ({ className }: HomePageProps) => {
         <Title>Все кроссовки</Title>
         <SearchInput value={searchString} onChange={onInputChange} />
       </div>
-      <ItemsList items={items} />
+      <ItemsList
+        items={items}
+        renderFunc={(item, key) => <Card key={key} item={item} />}
+      />
     </div>
   );
 };

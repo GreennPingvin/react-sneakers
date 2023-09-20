@@ -1,6 +1,6 @@
-import { Sneaker } from "./types";
+import { Item } from "./types";
 
-export const sneakers: Sneaker[] = [
+export const sneakers: Item[] = [
   {
     id: 1,
     title: "Мужские Кроссовки Nike Blazer Mid Suede",

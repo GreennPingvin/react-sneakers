@@ -1,20 +1,26 @@
-import { createContext } from "react";
-import { Sneaker } from "../../data/types";
+import { createContext, Dispatch, SetStateAction } from "react";
+import { Item } from "../../data/types";
 
-type SetItems = (items: Sneaker[]) => void;
+export type SetItems<T> = Dispatch<SetStateAction<T>>;
 
 interface Cart {
   isHidden: boolean;
   setIsHidden: (flag: boolean) => void;
 }
 
-interface Cards {
-  items: Sneaker[];
-  setItems: SetItems;
+interface Cards<T> {
+  items: T;
+  setItems: SetItems<T>;
+  addedToCartItems: T;
+  setAddedToCartItems: SetItems<T>;
+  addedToFavsItems: T;
+  setAddedToFavsItems: SetItems<T>;
+  purchasedItems: T;
+  setPurchasedItems: SetItems<T>;
 }
 
 export interface AppContextProps {
-  cards?: Cards;
+  cards?: Cards<Item[]>;
   cart?: Cart;
 }
 

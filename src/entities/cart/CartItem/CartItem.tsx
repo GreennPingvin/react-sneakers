@@ -1,11 +1,11 @@
-import { Sneaker } from "app/data/types";
+import { Item } from "app/data/types";
 import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./CartItem.module.scss";
 
 interface CartItemProps {
   className?: string;
-  item: Sneaker;
+  item: Item;
 }
 
 export const CartItem = ({ className, item }: CartItemProps) => {

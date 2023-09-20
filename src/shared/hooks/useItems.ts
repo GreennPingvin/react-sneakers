@@ -1,48 +1,92 @@
 import { AppContext } from "app/context/AppContext";
+import { SetItems } from "app/context/AppContext/AppContext";
 import { sneakers } from "app/data/sneakers";
-import { Sneaker } from "app/data/types";
+import { Item } from "app/data/types";
 import { useContext } from "react";
-import { saveItems } from "../lib/shopItems/localStorage";
+import {
+  ITEMS_ADDED_TO_CART,
+  ITEMS_ADDED_TO_FAVS,
+  PURCHASED_ITEMS,
+  saveItems,
+} from "../lib/shopItems/localStorage";
 
 export const useItems = () => {
   const {
-    cards: { items, setItems },
+    cards: {
+      items,
+      setItems,
+      addedToCartItems,
+      setAddedToCartItems,
+      addedToFavsItems,
+      setAddedToFavsItems,
+      purchasedItems,
+      setPurchasedItems,
+    },
   } = useContext(AppContext);
 
-  const updateState = (items: Sneaker[]) => {
-    setItems(items);
-    saveItems(items);
+  const findItemIndex = (item: Item, items: Item[]) => {
+    return items.findIndex((i) => i.id === item.id);
   };
 
-  const toggleAddToCart = (item: Sneaker) => {
-    const { id: itemId } = item;
-    const newItems = items.map((item) => {
-      if (item.id === itemId) {
-        return {
-          ...item,
-          isInCart: !item.isInCart,
-        };
-      }
-      return item;
+  const findItem = (item: Item, items: Item[]): null | Item => {
+    const index = findItemIndex(item, items);
+    return index === -1 ? null : items[index];
+  };
+
+  const appendItem = (item: Item | Item[], items: Item[]): Item[] => {
+    if (Array.isArray(item)) {
+      return [...items, ...item];
+    } else {
+      return [...items, item];
+    }
+  };
+
+  const toggleItemById = (item: Item, items: Item[]): Item[] => {
+    const foundItemIndex = findItemIndex(item, items);
+    let newItems;
+    if (foundItemIndex !== -1) {
+      newItems = [...items];
+      newItems.splice(foundItemIndex, 1);
+    } else {
+      newItems = appendItem(item, items);
+    }
+    return newItems;
+  };
+
+  const updateState = (
+    item: Item,
+    items: Item[],
+    changeStateFunc: (item: Item, items: Item[]) => Item[],
+    setStateFunc: SetItems<Item[]>,
+    localStorageKey: string,
+  ) => {
+    setStateFunc((oldVal: Item[]) => {
+      const newItems = changeStateFunc(item, oldVal);
+      saveItems(newItems, localStorageKey);
+      return newItems;
     });
-    updateState(newItems);
   };
 
-  const isItemInCart = (item: Sneaker): boolean => {
-    return item.isInCart;
+  const toggleAddToCart = (item: Item) => {
+    updateState(
+      item,
+      addedToCartItems,
+      toggleItemById,
+      setAddedToCartItems,
+      ITEMS_ADDED_TO_CART,
+    );
   };
 
-  const getItemsAddedToCart = (): Sneaker[] => {
-    return items.filter((i) => isItemInCart(i));
+  const isItemInCart = (item: Item): boolean => {
+    return findItem(item, addedToCartItems) !== null;
   };
 
   const getItemsInCartTotal = (): number => {
-    return getItemsAddedToCart().reduce((acc, i) => acc + i.price, 0);
+    return addedToCartItems.reduce((acc, i) => acc + i.price, 0);
   };
 
   const clearCart = () => {
-    const newItems = items.map((i) => ({ ...i, isInCart: false }));
-    updateState(newItems);
+    updateState(null, [], () => [], setAddedToCartItems, ITEMS_ADDED_TO_CART);
   };
 
   const filterItems = (searchString: string) => {
@@ -52,38 +96,56 @@ export const useItems = () => {
     setItems(newFilteredItems);
   };
 
-  const toggleAddToFavorites = (item: Sneaker) => {
-    const { id: itemId } = item;
-    const newItems = items.map((item) => {
-      if (item.id === itemId) {
-        return {
-          ...item,
-          isInFavorites: !item.isInFavorites,
-        };
-      }
-      return item;
-    });
-    updateState(newItems);
+  const toggleAddToFavorites = (item: Item) => {
+    updateState(
+      item,
+      addedToFavsItems,
+      toggleItemById,
+      setAddedToFavsItems,
+      ITEMS_ADDED_TO_FAVS,
+    );
   };
 
-  const isItemInFavorites = (item: Sneaker): boolean => {
-    return item.isInFavorites;
+  const isItemInFavorites = (item: Item): boolean => {
+    return findItem(item, addedToFavsItems) !== null;
   };
 
-  const getFavoriteItems = (): Sneaker[] => {
-    return items.filter((i) => isItemInFavorites(i));
+  const addToPurchased = (items: Item[]) => {
+    items.forEach((item) =>
+      updateState(
+        item,
+        purchasedItems,
+        appendItem,
+        setPurchasedItems,
+        PURCHASED_ITEMS,
+      ),
+    );
+  };
+
+  const getItemsAddedToCart = () => {
+    return addedToCartItems;
+  };
+
+  const getFavoriteItems = () => {
+    return addedToFavsItems;
+  };
+
+  const getPurchasedItems = () => {
+    return purchasedItems;
   };
 
   return {
     items,
+    getItemsAddedToCart,
+    getFavoriteItems,
+    getPurchasedItems,
     toggleAddToCart,
     toggleAddToFavorites,
     isItemInCart,
     isItemInFavorites,
-    getItemsAddedToCart,
     getItemsInCartTotal,
-    getFavoriteItems,
     clearCart,
     filterItems,
+    addToPurchased,
   };
 };
