@@ -4,6 +4,7 @@ import { useItems } from "shared/hooks/useItems";
 import { classNames } from "shared/lib/classNames/classNames";
 import { ItemsList } from "widgets/ItemsList";
 import { SearchInput } from "widgets/SearchInput";
+import { ImgSlider } from "widgets/Slider";
 import { Title } from "widgets/Title";
 import cls from "./HomePage.module.scss";
 
@@ -23,6 +24,7 @@ export const HomePage = ({ className }: HomePageProps) => {
 
   return (
     <div className={classNames(cls.HomePage, {}, [className])}>
+      <ImgSlider />
       <div className={cls.titleWrapper}>
         <Title>Все кроссовки</Title>
         <SearchInput value={searchString} onChange={onInputChange} />

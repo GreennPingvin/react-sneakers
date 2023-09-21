@@ -1,0 +1,63 @@
+.carousel {
+  position: relative;
+  margin-bottom: 39px;
+  &__back-button,
+  &__next-button {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    opacity: 0.5;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    &:hover {
+      transition: opacity 0.1s ease-out;
+      opacity: 1;
+    }
+  }
+  &__back-button {
+    transform: translateY(-50%) translateX(-25%);
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  &__next-button {
+    right: 0;
+    transform: translateY(-50%) translateX(25%);
+  }
+  &__inner-slide {
+    padding: 0 5px;
+  }
+  &__dot-group {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    gap: 10px;
+  }
+  &__dot {
+    width: 13px;
+    height: 13px;
+    opacity: 0.5;
+    border-radius: 50%;
+    background-color: #fff;
+    &:hover,
+    &--selected {
+      transition: opacity 0.1s ease-out;
+      opacity: 1;
+    }
+  }
+  &__buyBtn {
+    position: absolute;
+    top: 201px;
+    left: 60px;
+    width: 177.459px;
+    height: 47.09px;
+    border-radius: 110px;
+  }
+}
